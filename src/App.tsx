@@ -1,13 +1,13 @@
 import React from 'react';
 //import logo from './logo.svg';
 import './App.css';
-import Nav from './components/Navbar';
+import Navbar from './components/navbar/navbar.component';
 
 
 const App =  () => {
 	return (
 		<div className="App">
-			<Nav/>
+			<Navbar/>
 		</div>
 	);
 };
