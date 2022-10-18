@@ -1,33 +1,35 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import './navbar.styles.css';
 
-const Navbar = ():JSX.Element =>{
+const Navbar = ():JSX.Element => {
+	
 	return (
 		<>
 			<div className="navbar-header">
 				<ul className="nav-list">
 					<li className="nav-item">
-						<a href="account">My Account</a>
+						<Link to="/account">My Account</Link>
 					</li>
 					<li className="nav-item">
-						<a href="login">Log In</a>
+						<Link to="/login">Log In</Link>
 					</li>
 					<li className="nav-item">
-						<a href="navitem">Create an account</a>
+						<a href="/create_account">Create an account</a>
 					</li>
 				</ul>
 			</div>
 			<div className="navbar-main">
 				<ul className="nav-list-main">
 					<li className="nav-main-item">
-						<a href="gloves">GLOVES</a>
+						<Link to="/gloves">GLOVES</Link>
 					</li>
 					<li className="nav-main-item">
-						<a href="headgear">HEADGEAR</a>
+						<Link to="/headgear">HEADGEAR</Link>
 					</li>
 					<li className="nav-main-item">
-						<a href="groin">GROIN PROTECTOR</a>
+						<Link to="groin">GROIN PROTECTOR</Link>
 					</li>
 				</ul>
 				<form>	
