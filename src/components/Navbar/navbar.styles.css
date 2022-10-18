@@ -1,0 +1,62 @@
+.navbar-header {
+	background-color: black;
+	overflow: hidden;
+}	
+		
+.nav-list {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+}
+
+.nav-item {
+	list-style:none;
+	margin-right: 2rem;
+}
+
+.nav-item a {
+	text-decoration:none;
+	color: white;
+}
+
+.nav-item a:hover {
+	color: red;
+	background-color: white;	
+}
+
+.navbar-main {
+	background-color: blue;
+	height: auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 10vw;
+}
+
+
+.nav-list-main {
+	display: flex;
+	justify-content: center;
+	align-items: center;	
+}
+
+.nav-main-item {
+	list-style: none;
+	margin-right: 2rem;
+	margin-top:1rem;
+	margin-bottom:1rem;
+}
+
+.nav-main-item a {
+	text-decoration:none;
+	color: white;
+}
+
+.nav-main-item a:hover {
+	color: red;
+	background-color:white;
+}
+
+.form-search {
+	padding: 10px;
+}
