@@ -28,12 +28,11 @@ if ($method == 'POST') {
     }
     # test si les données sont valides
     $floatVal = floatval($data['price']); // Try to convert the string to a float
-    if(!$floatVal || $floatVal<0) // If the parsing not succeeded
-    {
+    if (!$floatVal || $floatVal<0){ // If the parsing not succeeded
         $errors[]='invalid_price';
     }
     if (!empty($data['photo'])){
-      if(!filter_var($data['photo'], FILTER_VALIDATE_URL)){
+      if (!filter_var($data['photo'], FILTER_VALIDATE_URL)) {
         $errors[]='invalid_photo_url';
       }
     }
@@ -65,7 +64,8 @@ if ($method == 'POST') {
 
       $data['seller'] = $connected['data']['id'];
       $data['date'] = date('Y-m-d H:i:s');
-      $req=$db->prepare('INSERT INTO listing(name, address, price, description, status, photo, seller, category, date) VALUES(:name, :address, :price, :description, :status, :photo, :seller, :category, :date);');
+      $req=$db->prepare('INSERT INTO listing(name, address, price, description, status, photo, seller, category, date)
+      VALUES(:name, :address, :price, :description, :status, :photo, :seller, :category, :date);');
       $test=$req->execute(array(
         "name" => $data['name'],
         "address" => $data['address'],
@@ -78,8 +78,7 @@ if ($method == 'POST') {
         "date" => $data['date']
       ));
 
-      if ($test==true && $req->rowCount()==1)
-      {
+      if ($test==true && $req->rowCount()==1){
         http_response_code(201); # created
 
         echo json_encode(array(
@@ -108,7 +107,7 @@ if ($method == 'POST') {
     ));
   }
 
-} else if ($method == 'GET') {
+} elseif ($method == 'GET') {
 
   if ($connected['status'] == true){
 
@@ -159,7 +158,7 @@ if ($method == 'POST') {
     ));
   }
 
-} else if ($method == 'DELETE') {
+} elseif ($method == 'DELETE') {
 
   if ($connected['status'] == true){
 
@@ -174,7 +173,8 @@ if ($method == 'POST') {
       $id_fetch = $db->prepare('SELECT * FROM listing WHERE id = ?;');
       $id_fetch->execute(array($data['listing']));
       $object = $id_fetch->fetch();
-      if (!$object || $object['seller']!=$connected['data']['id']) { # si l'objet n'existe pas ou si l'objet n'appartient pas à l'utilisateur
+      if (!$object || $object['seller']!=$connected['data']['id']) {
+        # si l'objet n'existe pas ou si l'objet n'appartient pas à l'utilisateur
         $errors[]='invalid_listing';
       }
     }
@@ -225,8 +225,8 @@ if ($method == 'POST') {
     ));
   }
 
-} else if ($method == 'PATCH') {
-  if ($connected['status'] == true){
+} elseif ($method == 'PATCH') {
+  if ($connected['status'] == true) {
 
     // Return alert
 
@@ -240,7 +240,7 @@ if ($method == 'POST') {
       $object = $req->fetch(); # on récupére l'objet
       if (!$object) {
         $errors[]='invalid_id_object';
-      } else if ($object['seller'] != $connected['data']['id']) {
+      } elseif ($object['seller'] != $connected['data']['id']) {
         $errors[]='unauthorized';
       }
     }
@@ -253,7 +253,7 @@ if ($method == 'POST') {
 
     if (!isset($data['name'])){
       $data['name']=$object['name'];
-    } else if (empty($data['name'])){
+    } elseif (empty($data['name'])){
       $errors[]='invalid_name';
     }
 
@@ -266,33 +266,32 @@ if ($method == 'POST') {
       $data['price']=$object['price'];
     } else {
       $floatVal = floatval($data['price']); // Try to convert the string to a float
-      if(!$floatVal || $floatVal<0)
-      {
+      if (!$floatVal || $floatVal<0){
           $errors[]='invalid_price';
       }
     }
 
     if (!isset($data['photo'])){
       $data['photo']=$object['photo'];
-    } else if (!empty($data['photo'])){
-      if(!filter_var($data['photo'], FILTER_VALIDATE_URL)){
+    } elseif (!empty($data['photo'])){
+      if (!filter_var($data['photo'], FILTER_VALIDATE_URL)){
         $errors[]='invalid_photo_url';
       }
     }
 
     if (!isset($data['category'])){
       $data['category']=$object['category'];
-    } else if (!empty($data['category'])){
+    } elseif (!empty($data['category'])){
       $req = $db->prepare('SELECT * FROM category WHERE id = ?;');
       $req->execute(array($data['category']));
       $test = $req->fetch();
-      if (!$test){ # fake category
+      if (!$test) { # fake category
         $errors[]='invalid_category';
       }
     }
 
 
-    if (!empty($errors)){
+    if (!empty($errors)) {
       http_response_code(400); # bad request
 
       echo json_encode(array(
@@ -303,7 +302,8 @@ if ($method == 'POST') {
 
     } else {
 
-      $req=$db->prepare('UPDATE listing SET name=:name, address=:address, price=:price, description=:description, status=:status, photo=:photo, category=:category WHERE id=:id;');
+      $req=$db->prepare('UPDATE listing SET name=:name, address=:address, price=:price,
+      description=:description, status=:status, photo=:photo, category=:categoryWHERE id=:id;');
       $test=$req->execute(array(
         "name" => $data['name'],
         "address" => $data['address'],
@@ -315,8 +315,7 @@ if ($method == 'POST') {
         "id" => $data['listing']
       ));
 
-      if ($test==true && $req->rowCount()==1)
-      {
+      if ($test==true && $req->rowCount()==1) {
         http_response_code(200); # ok
 
         echo json_encode(array(
