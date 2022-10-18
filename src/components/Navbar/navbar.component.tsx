@@ -8,26 +8,26 @@ const Navbar = ():JSX.Element =>{
 			<div className="navbar-header">
 				<ul className="nav-list">
 					<li className="nav-item">
-						<a href="#">My Account</a>
+						<a href="account">My Account</a>
 					</li>
 					<li className="nav-item">
-						<a href="#">Log In</a>
+						<a href="login">Log In</a>
 					</li>
 					<li className="nav-item">
-						<a href="#">Create an account</a>
+						<a href="navitem">Create an account</a>
 					</li>
 				</ul>
 			</div>
 			<div className="navbar-main">
 				<ul className="nav-list-main">
 					<li className="nav-main-item">
-						<a href="#">GLOVES</a>
+						<a href="gloves">GLOVES</a>
 					</li>
 					<li className="nav-main-item">
-						<a href="#">HEADGEAR</a>
+						<a href="headgear">HEADGEAR</a>
 					</li>
 					<li className="nav-main-item">
-						<a href="#">GROIN PROTECTOR</a>
+						<a href="groin">GROIN PROTECTOR</a>
 					</li>
 				</ul>
 				<form>	
