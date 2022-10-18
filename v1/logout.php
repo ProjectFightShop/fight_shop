@@ -22,7 +22,7 @@ if ($method == 'DELETE') {
     }
 
 
-    if (!empty($errors)){
+    if (!empty($errors)) {
       http_response_code(400); # bad request
 
       echo json_encode(array(
@@ -45,7 +45,7 @@ if ($method == 'DELETE') {
     $test3 = $req3->fetch();
 
 
-    if (!$test3){ # token bien supprimé
+    if (!$test3) { # token bien supprimé
 
       http_response_code(200); # Ok
 

@@ -10,8 +10,11 @@ if (!empty($_GET['id'])) {
 if ($method == 'GET') {
   if ($connected['status'] == true) {
     # lister les conversations
-    $req = $db->prepare('SELECT CASE WHEN receiver = ? THEN sender ELSE receiver END AS contact, max(date) AS date FROM messages WHERE receiver = ? OR sender = ? GROUP BY CASE WHEN receiver = ? THEN sender ELSE receiver END ORDER BY date DESC;');
-    $req->execute(array($connected['data']['id'], $connected['data']['id'], $connected['data']['id'], $connected['data']['id']));
+    $req = $db->prepare('SELECT CASE WHEN receiver = ? THEN sender ELSE receiver END AS contact, max(date) AS date
+    FROM messagesWHERE receiver = ? OR sender = ? GROUP BY CASE WHEN receiver = ?
+    THEN sender ELSE receiver END ORDER BY date DESC;');
+    $req->execute(array($connected['data']['id'], $connected['data']['id'],
+    $connected['data']['id'], $connected['data']['id']));
     $test = $req->fetchAll();
 
     if ($test)
@@ -42,7 +45,7 @@ if ($method == 'GET') {
     ));
   }
 
-} else if ($method == 'GET') {
+} elseif ($method == 'GET') {
   if ($connected['status'] == true) {
     $errors=array();
     if (empty($data['receiver'])){
@@ -70,7 +73,8 @@ if ($method == 'GET') {
     } else {
       # lister les messages pour un destinataire
 
-      $req = $db->prepare('SELECT * FROM messages WHERE (sender = ? AND receiver = ?) OR (receiver = ? AND sender = ?) ORDER BY date DESC;');
+      $req = $db->prepare('SELECT * FROM messages WHERE (sender = ? AND receiver = ?)
+      OR (receiver = ? AND sender = ?) ORDER BY date DESC;');
       $req->execute(array($connected['data']['id'], $data['receiver'], $connected['data']['id'], $data['receiver']));
       $test = $req->fetchAll();
 
@@ -103,7 +107,7 @@ if ($method == 'GET') {
       "returnheaders" => $headers
     ));
   }
-} else if ($method == 'POST'){
+} elseif ($method == 'POST'){
     # Envoyer un message
     if ($connected['status'] == true) {
       # test si les données sont vides
@@ -137,7 +141,8 @@ if ($method == 'GET') {
         $data['date'] = date('Y-m-d H:i:s');
         $data['sender'] = $connected['data']['id'];
 
-        $req = $db->prepare('INSERT INTO messages(sender, receiver, content, date) VALUES(:sender, :receiver, :content, :date);');
+        $req = $db->prepare('INSERT INTO messages(sender, receiver, content, date)
+        VALUES(:sender, :receiver, :content, :date);');
         $test = $req->execute(array(
           "sender" => $data['sender'],
           "receiver" => $data['receiver'],
@@ -173,14 +178,14 @@ if ($method == 'GET') {
         "returnheaders" => $headers
       ));
     }
-  } else if ($method == 'DELETE') {
+  } elseif ($method == 'DELETE') {
   # Supprimer un message ou une conversation entière
 
   if ($connected['status'] == true) {
     $errors=array();
     if (empty($data['message']) && empty($data['receiver'])) {
       $errors[]='misssing_ambigious_data';
-    } else if (!empty($data['message']) && !empty($data['receiver'])) {
+    } elseif (!empty($data['message']) && !empty($data['receiver'])) {
       $errors[]='extra_ambigious_data';
     }
 
@@ -204,7 +209,7 @@ if ($method == 'GET') {
       }
     }
 
-    if (!empty($errors)){
+    if (!empty($errors)) {
       http_response_code(400); # bad request
 
       echo json_encode(array(
@@ -219,7 +224,7 @@ if ($method == 'GET') {
         $req = $db->prepare('DELETE FROM messages WHERE id = ?;');
         $test = $req->execute(array($data['message']));
 
-        if ($test){ # message bien supprimé
+        if ($test) { # message bien supprimé
 
           http_response_code(200); # Ok
 
@@ -240,10 +245,12 @@ if ($method == 'GET') {
 
       } else {
         # Supprimer une conversation entiere
-        $req = $db->prepare('DELETE FROM messages WHERE (sender = ? AND receiver = ?) OR (receiver = ? AND sender = ?);');
-        $test = $req->execute(array($connected['data']['id'], $data['receiver'], $connected['data']['id'], $data['receiver']));
+        $req = $db->prepare('DELETE FROM messages WHERE (sender = ? AND receiver = ?)
+        OR (receiver = ? AND sender = ?);');
+        $test = $req->execute(array($connected['data']['id'], $data['receiver'],
+        $connected['data']['id'], $data['receiver']));
 
-        if ($test){ # conversation bien supprimée
+        if ($test) { # conversation bien supprimée
 
           http_response_code(200); # Ok
 
@@ -276,7 +283,7 @@ if ($method == 'GET') {
   }
 
 
-} else if ($method == 'PATCH') {
+} elseif ($method == 'PATCH') {
   # Modifier un message
 
   if ($connected['status'] == true) {
@@ -299,7 +306,7 @@ if ($method == 'GET') {
       }
     }
 
-    if (!empty($errors)){
+    if (!empty($errors)) {
       http_response_code(400); # bad request
 
       echo json_encode(array(

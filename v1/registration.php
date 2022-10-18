@@ -14,12 +14,12 @@ if ($method == 'POST') {
   if (empty($data['plainpassword'])){
     $errors[]='missing_plainpassword';
   }
-  if (empty($data['name'])){
+  if (empty($data['name'])) {
     $errors[]='missing_name';
   }
   # test si les données sont valides
-  if (!empty($data['email'])){
-    if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
+  if (!empty($data['email'])) {
+    if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
       $errors[]='invalid_email';
     } else {
       # on vérifie si l'email existe déjà dans la db (unique)
@@ -32,22 +32,22 @@ if ($method == 'POST') {
     }
   }
   if (!empty($data['plainpassword'])){ # 8 caractères, 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial minimum
-    if(preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/", $data['plainpassword']) === 0){
+    if (preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/", $data['plainpassword']) === 0) {
       $errors[]='password_not_conform';
     }
   }
-  if (!empty($data['telephone'])){
+  if (!empty($data['telephone'])) {
     if(preg_match("/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/", $data['telephone']) === 0){
       $errors[]='invalid_telephone';
     }
   }
-  if (!empty($data['photo'])){
+  if (!empty($data['photo'])) {
     if(!filter_var($data['photo'], FILTER_VALIDATE_URL)){
       $errors[]='invalid_photo_url';
     }
   }
 
-  if (!empty($errors)){
+  if (!empty($errors)) {
     http_response_code(400); # bad request
 
     echo json_encode(array(
@@ -60,7 +60,8 @@ if ($method == 'POST') {
 
     $data['password']=password_hash($data['plainpassword'], PASSWORD_DEFAULT);
     $data['date'] = date('Y-m-d H:i:s');
-    $req=$db->prepare('INSERT INTO users(email, name, telephone, photo, password, address, date) VALUES(:email, :name, :telephone, :photo, :password, :address, :date);');
+    $req=$db->prepare('INSERT INTO users(email, name, telephone, photo, password, address, date)
+    VALUES(:email, :name, :telephone, :photo, :password, :address, :date);');
     $req->execute(array(
       "email" => $data['email'],
       "name" => $data['name'],
@@ -77,8 +78,7 @@ if ($method == 'POST') {
     $test = $req->fetch();
 
     $verify = password_verify($data['plainpassword'], $test['password']);
-    if ($verify)
-    {
+    if ($verify) {
       http_response_code(201); # created
 
       echo json_encode(array(

@@ -29,7 +29,7 @@ if ($method == 'POST') {
   $test = $req->fetchAll();
 
 
-  if (!$test){ # pas de résultats
+  if (!$test) { # pas de résultats
 
     http_response_code(204); # no content
 

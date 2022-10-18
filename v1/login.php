@@ -31,8 +31,8 @@ if ($method == 'POST') {
         $errors[]='invalid_email';
       }
     }
-    if (!empty($data['plainpassword'])){ # 8 caractères, 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial minimum
-      if(preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/", $data['plainpassword']) === 0){
+    if (!empty($data['plainpassword'])){ #8 caractères, 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial minimum
+      if (preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/",$data['plainpassword'])===0) {
         $errors[]='password_not_conform';
       }
     }
@@ -67,7 +67,7 @@ if ($method == 'POST') {
         "returntosender" => $data
       ));
 
-    } else if ($verify) { # bon email et mdp
+    } elseif ($verify) { # bon email et mdp
 
       $token = generateRandomString(255);
       $date = date('Y-m-d H:i:s', strtotime('+1 year'));
@@ -79,7 +79,7 @@ if ($method == 'POST') {
         "expiration" => $date
       ));
 
-      if ($req2){
+      if ($req2) {
         http_response_code(200); # ok
 
         echo json_encode(array(

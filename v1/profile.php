@@ -39,7 +39,7 @@ if ($method == 'PATCH') {
     if (isset($data['password']) AND isset($data['plainpassword'])){
       $verify = password_verify($data['plainpassword'], $connected['data']['password']);
       if($verify){
-        if(!(preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/", $data['password']) === 0)){
+        if(!(preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/",$data['password']) === 0)){
           $data['password']=password_hash($data['password'], PASSWORD_DEFAULT); # mdp ok
         } else {
           $errors[]='invalid_password';
@@ -66,7 +66,8 @@ if ($method == 'PATCH') {
       } else {
 
         $req = $db->prepare('UPDATE users SET name=?, telephone=?, photo=?, address=?, password=? WHERE id=?;');
-        $test = $req->execute(array($data['name'], $data['telephone'], $data['photo'], $data['address'], $data['password'], $connected['data']['id']));
+        $test = $req->execute(array($data['name'], $data['telephone'], $data['photo'], $data['address'],
+        $data['password'], $connected['data']['id']));
 
         if($test==true && $req->rowCount()==1) {
           http_response_code(200); # Ok
@@ -101,7 +102,7 @@ if ($method == 'PATCH') {
 
   }
 
-} else if ($method == 'GET') {
+} elseif ($method == 'GET') {
 
   if ($connected['status'] == true){
 
