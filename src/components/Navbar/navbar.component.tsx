@@ -16,7 +16,7 @@ const Navbar = ():JSX.Element => {
 						<Link to="/login">Log In</Link>
 					</li>
 					<li className="nav-item">
-						<a href="/create_account">Create an account</a>
+						<Link to="/create_account">Create an account</Link>
 					</li>
 				</ul>
 			</div>
