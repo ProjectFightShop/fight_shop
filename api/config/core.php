@@ -1,7 +1,7 @@
 <?php
 // Main config file
-require_once dirname(__FILE__).'/../../config/config.php';
-require_once dirname(__FILE__).'/../../config/fightshopconfig.php';
+require_once dirname(__FILE__).'/../../../config/config.php';
+require_once dirname(__FILE__).'/../../../config/fightshopconfig.php';
 
 require dirname(__FILE__).'/../3rd_parties/PHPMailer/PHPMailer.php';
 require dirname(__FILE__).'/../3rd_parties/PHPMailer/SMTP.php';
