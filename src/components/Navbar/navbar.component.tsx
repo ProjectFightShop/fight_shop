@@ -13,7 +13,7 @@ const Navbar = ():JSX.Element => {
 						<Link to="/account">My Account</Link>
 					</li>
 					<li className="nav-item">
-						<Link to="/login">Log In</Link>
+						<Link to="login">Log In</Link>
 					</li>
 					<li className="nav-item">
 						<Link to="/create_account">Create an account</Link>
