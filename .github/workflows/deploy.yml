@@ -5,6 +5,8 @@ on: workflow_dispatch
 jobs:
   build-deploy:
     runs-on: ubuntu-latest
+    env:
+      CI: ""
     steps:
     - id: build-publish
       uses: bitovi/github-actions-react-to-ghp@v1.0.0
