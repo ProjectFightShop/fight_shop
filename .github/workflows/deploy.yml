@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - dev
+      - stable
+  pull_request:
+    branches:
+      - dev
+      - stable
+  workflow_dispatch:
+
+jobs:
+  build-deploy:
+    permissions:
+      contents: 'read'
+      id-token: 'write'
+      pages: 'write'
+      deployments: 'write'
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    env:
+      CI: ""
+    steps:
+    - id: deployment
+      uses: bitovi/github-actions-react-to-ghp@v1.0.0
