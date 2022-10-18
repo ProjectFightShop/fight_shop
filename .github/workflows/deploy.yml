@@ -5,10 +5,14 @@ on: workflow_dispatch
 jobs:
   build-deploy:
     permissions:
-     contents: 'read'
-     id-token: 'write'
-     pages: 'write'
+      contents: 'read'
+      id-token: 'write'
+      pages: 'write'
+      deployments: 'write'
     runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     env:
       CI: ""
     steps:
