@@ -2,7 +2,7 @@
 import React from 'react'
 
 /* styles */
-import './footer.styles.scss'
+import './footer.styles.css'
 
 const Footer = (): JSX.Element => {
     return (

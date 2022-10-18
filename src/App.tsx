@@ -3,8 +3,8 @@ import React from 'react';
 import './App.css';
 
 /* components */
-import Nav from './components/Navbar/navbar.components';
-import Footer from './components/Footer/footer.components';
+import Nav from './components/Navbar/navbar.component';
+import Footer from './components/Footer/footer.component';
 
 
 const App =  () => {
