@@ -1,4 +1,4 @@
-const Homepage = ():JSX.Element =>{
+const Login = ():JSX.Element =>{
 	return (
 		<>
 			<p>Ceci est un test</p>
@@ -8,9 +8,9 @@ const Homepage = ():JSX.Element =>{
                 <input className="form-password" type="password"/>
 				<button className="Login">Login</button>
 			</form>
-            
+
 		</>
 	);
 };
 
-export default Homepage;
+export default Login;
