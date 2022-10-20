@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 
 import './navbar.styles.css';
 
@@ -10,23 +10,23 @@ const Navbar = ():JSX.Element => {
 			<div className="navbar-header">
 				<ul className="nav-list">
 					<li className="nav-item">
-						<Link to="/account">My Account</Link>
+						<Link to="account">My Account</Link>
 					</li>
 					<li className="nav-item">
-						<Link to="/fight_shop/login">Log In</Link>
+						<Link to="login">Log In</Link>
 					</li>
 					<li className="nav-item">
-						<Link to="/create_account">Create an account</Link>
+						<Link to="create_account">Create an account</Link>
 					</li>
 				</ul>
 			</div>
 			<div className="navbar-main">
 				<ul className="nav-list-main">
 					<li className="nav-main-item">
-						<Link to="/gloves">GLOVES</Link>
+						<Link to="gloves">GLOVES</Link>
 					</li>
 					<li className="nav-main-item">
-						<Link to="/headgear">HEADGEAR</Link>
+						<Link to="headgear">HEADGEAR</Link>
 					</li>
 					<li className="nav-main-item">
 						<Link to="groin">GROIN PROTECTOR</Link>
@@ -37,6 +37,7 @@ const Navbar = ():JSX.Element => {
 					<button className="form-search">Search</button>
 				</form>
 			</div>
+			<Outlet />
 		</>
 	);
 };
