@@ -37,7 +37,6 @@ const Navbar = ():JSX.Element => {
 					<button className="form-search">Search</button>
 				</form>
 			</div>
-			<Outlet />
 		</>
 	);
 };
