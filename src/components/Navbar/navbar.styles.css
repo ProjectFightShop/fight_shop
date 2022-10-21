@@ -33,6 +33,21 @@
 	gap: 10vw;
 }
 
+@media(max-width:800px){
+   
+   .nav-list {
+   	justify-content: center;
+   }
+   
+   .form-search {
+	display: none;
+	
+   }
+   
+   .nav-list-main {
+   	flex-direction: column;
+   }
+}
 
 .nav-list-main {
 	display: flex;
