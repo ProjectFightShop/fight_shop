@@ -12,6 +12,7 @@ import './App.css';
 import PageLayout from './pages/PageLayout/pagelayout.component';
 import HomePage from './pages/homepage/homepage.component';
 import Login from './pages/login/login.component';
+import SignIn from './pages/signin/signin.component';
 
 const App = () => {
   return (
@@ -22,6 +23,7 @@ const App = () => {
           <Route index element={<HomePage />} />
           <Route path="login" element ={<Login />} />
         </Route>
+        <Route path="/fight_shop" element ={<SignIn />}></Route>
       </Routes>
     </div>
   );

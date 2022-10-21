@@ -1,13 +1,17 @@
+import {Link} from 'react-router-dom';
+
 const Login = ():JSX.Element =>{
 	return (
 		<>
-			<p>Ceci est un test</p>
+			<p>Connectez vous</p>
 
             <form>	
 				<input className="form-user" type="text"/>
                 <input className="form-password" type="password"/>
 				<button className="Login">Login</button>
 			</form>
+
+			<Link to="signin">Pas inscrit ? Inscrivez vous !</Link>
 
 		</>
 	);
