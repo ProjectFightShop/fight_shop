@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 const CreateAccount = ():JSX.Element =>{
 	return (
 		<>
@@ -11,6 +13,8 @@ const CreateAccount = ():JSX.Element =>{
                 <input className="form-age" type="text"/>
 				<button className="create_account">SignIn</button>
 			</form>
+
+			<Link to="../login">Deja inscrit ? Connectez vous !</Link>
 
 		</>
 	);

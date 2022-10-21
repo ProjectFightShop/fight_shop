@@ -1,3 +1,5 @@
+import {Link} from 'react-router-dom';
+
 const Login = ():JSX.Element =>{
 	return (
 		<>
@@ -8,6 +10,8 @@ const Login = ():JSX.Element =>{
                 <input className="form-password" type="password"/>
 				<button className="Login">Login</button>
 			</form>
+
+			<Link to="../create_account">Non inscrit ? Inscrivez vous !</Link>
 
 		</>
 	);
