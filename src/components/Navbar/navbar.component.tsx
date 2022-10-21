@@ -32,9 +32,9 @@ const Navbar = ():JSX.Element => {
 						<Link to="groin">GROIN PROTECTOR</Link>
 					</li>
 				</ul>
-				<form>	
+				<form action='search' method="get">
 					<input className="form-search" type="text"  placeholder="Search.."/>
-					<button className="form-search">Search</button>
+					<button className="form-search" type="submit">Search</button>
 				</form>
 			</div>
 		</>

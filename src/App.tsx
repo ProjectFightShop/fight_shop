@@ -17,6 +17,7 @@ import Glove from './pages/glove/glove.component';
 import Headgear from './pages/headgear/headgear.component';
 import Groin from './pages/groin/groin.component';
 import Account from './pages/account/account.component';
+import Search from './pages/search/search.component';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
           <Route path="groin" element ={<Groin />} />
           <Route path="create_account" element ={<CreateAccount />} />
           <Route path="account" element ={<Account />} />
+          <Route path="search" element ={<Search />} />
         </Route>
       </Routes>
     </div>
