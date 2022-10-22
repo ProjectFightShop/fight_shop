@@ -1,6 +1,3 @@
-/* modules */
-import React from 'react'
-
 /* styles */
 import './footer.styles.css'
 

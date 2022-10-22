@@ -1,4 +1,3 @@
-import React from 'react';
 import {Product}  from "../../interfaces/product";
 import { Link } from "react-router-dom";
 

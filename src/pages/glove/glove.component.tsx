@@ -1,8 +1,3 @@
-/* modules */
-import React from 'react'
-
-
-
 const Glove = ():JSX.Element =>{
   return (
     <>

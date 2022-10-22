@@ -1,5 +1,3 @@
-import React from 'react';
-
 import {Products}  from "../../store/store";
 import ProductListingItem from '../../components/ProductListingItem/productlistingitem.component';
 
