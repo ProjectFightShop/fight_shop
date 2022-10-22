@@ -67,7 +67,7 @@ if ($method == 'POST') {
       $token = generateRandomString(255);
       $date = date('Y-m-d H:i:s', strtotime('+1 year'));
       # ajout du token dans la db
-      $req2=$db->prepare('INSERT INTO client_tokens(user, token, expiration) VALUES(:user, :token, :expiration);');
+      $req2=$db->prepare('INSERT INTO client_token(user, token, expiration) VALUES(:user, :token, :expiration);');
       $req2->execute(array(
         "user" => $test['id'],
         "token" => $token,
