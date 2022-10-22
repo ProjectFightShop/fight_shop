@@ -21,7 +21,7 @@ if ($method == 'POST') {
     exit();
   }
 
-  $req = $db->prepare('SELECT * FROM product; -- WHERE (name LIKE ? OR description LIKE ?);');
+  $req = $db->prepare('SELECT * FROM product WHERE (name LIKE ? OR description LIKE ?);');
   $req->execute(array(
     '%'.$data['search'].'%',
     '%'.$data['search'].'%'
