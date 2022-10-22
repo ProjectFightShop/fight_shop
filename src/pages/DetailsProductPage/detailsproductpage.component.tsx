@@ -15,6 +15,7 @@ const DetailsProductPage = () : JSX.Element => {
 				  <li>{state.sku}</li>
 				  <li>{state.color}</li>
 				  <li>{state.size}</li>
+				  <li>{state.url}</li>
 				</ul>
   	  )}
 	  <ol>

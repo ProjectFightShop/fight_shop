@@ -1,7 +1,16 @@
 .navbar-header {
 	background-color: black;
 	overflow: hidden;
-}	
+}
+
+.logo {
+	float: left;
+	font-size: 20px;
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+	width: 50px;
+}
 		
 .nav-list {
 	display: flex;

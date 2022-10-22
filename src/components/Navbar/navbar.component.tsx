@@ -1,12 +1,16 @@
 import { Link} from 'react-router-dom';
 
 import './navbar.styles.css';
+import Logo from '../../assets/Logo.png';
 
 const Navbar = ():JSX.Element => {
 	
 	return (
 		<>
 			<div className="navbar-header">
+				<Link to="/fight_shop" className="navbar-logo">
+					<img className="logo" src={Logo} alt="logo"/>
+				</Link>
 				<ul className="nav-list">
 					<li className="nav-item">
 						<Link to="account">My Account</Link>

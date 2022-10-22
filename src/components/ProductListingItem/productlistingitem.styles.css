@@ -1,0 +1,39 @@
+.prod {
+    display:flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.page_produit {
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: center;
+}
+
+.produit {
+    background-color: gray;
+    display:flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    width: 700px;
+    border: 2px solid black;
+    border-collapse: collapse;
+}
+
+.produit img {
+    width: 50%;
+    max-height: none;
+    height: 100%;
+    opacity: 0.90;
+}
+
+.all_info {
+    width:100%;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
+    justify-content: space-around;
+    background-color: lightcoral;
+}

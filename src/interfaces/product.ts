@@ -5,5 +5,6 @@ export interface Product {
   description: string, 
   sku: string,
   color: string,
-  size: string
+  size: string,
+  url: string
 };

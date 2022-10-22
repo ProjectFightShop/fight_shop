@@ -8,7 +8,8 @@ export const Products: Product[] = [
 		sku: "sku",
 		color: "color",
 		size:"40z",
-		price:300
+		price:300,
+		url: "url"
 	},
 	{
 		id: 2,
@@ -17,7 +18,8 @@ export const Products: Product[] = [
 		sku: "sku",
 		color: "color",
 		size:"40z",
-		price:300
+		price:300,
+		url: "url"
 	},
 	{
 		id: 3,
@@ -26,6 +28,7 @@ export const Products: Product[] = [
 		sku: "sku",
 		color: "color",
 		size:"40z",
-		price:400
+		price:400,
+		url: "url"
 	}
 ];
