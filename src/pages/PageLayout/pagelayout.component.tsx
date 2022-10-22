@@ -9,11 +9,11 @@ import './pagelayout.styles.css'
 
 const PageLayout = ():JSX.Element => {
   return (
-    <>
+    <div className='scroller'>
       <Navbar />
       <Outlet />
       <Footer />
-    </>
+    </div>
   );
 };
 
