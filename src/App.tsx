@@ -13,6 +13,7 @@ import ListingProductPage from './pages/ListingProductPage/listingproductpage.co
 import DetailsProductPage from './pages/DetailsProductPage/detailsproductpage.component';
 import CreateAccount from './pages/create_account/create_account.component';
 import Account from './pages/account/account.component';
+import Search from './pages/search/search.component';
 
 const App = () => {  
   return (
@@ -24,6 +25,7 @@ const App = () => {
           <Route path="login" element ={<Login />} />
           <Route path="create_account" element ={<CreateAccount />} />
           <Route path="account" element ={<Account />} />
+          <Route path="search" element ={<Search />} />
           <Route path="gloves">
             <Route index element={<ListingProductPage />} />
             <Route path=":id" element={<DetailsProductPage />} />
