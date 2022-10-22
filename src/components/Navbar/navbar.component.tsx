@@ -23,7 +23,7 @@ const Navbar = ():JSX.Element => {
 			<div className="navbar-main">
 				<ul className="nav-list-main">
 					<li className="nav-main-item">
-						<Link to="glove">GLOVES</Link>
+						<Link to="gloves">GLOVES</Link>
 					</li>
 					<li className="nav-main-item">
 						<Link to="headgear">HEADGEAR</Link>

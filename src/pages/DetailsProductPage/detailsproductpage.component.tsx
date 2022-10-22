@@ -9,7 +9,7 @@ const DetailsProductPage = () : JSX.Element => {
   return (
     <>
 		  {state && (
-				<ol>
+				<ul>
 				  <li>{state.id}</li>
 				  <li>{state.name}</li>
 				  <li>{state.price}</li>
@@ -17,8 +17,19 @@ const DetailsProductPage = () : JSX.Element => {
 				  <li>{state.sku}</li>
 				  <li>{state.color}</li>
 				  <li>{state.size}</li>
-				</ol>
+				</ul>
   	  )}
+	  <ol>
+		<li>a</li>
+		<li>b</li>
+		<li>c</li>
+		<li>d</li>
+		<li>e</li>
+		<li>f</li>
+		<li>g</li>
+
+
+	  </ol>
  	  </>
   );
 };
