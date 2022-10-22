@@ -15,7 +15,7 @@ if ($method == 'DELETE') {
     } else {
       $req = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
       $req->execute(array($connected['tokendata']['token']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
       if (!$test){
         $errors[]='token_not_exists';
       }
@@ -42,7 +42,7 @@ if ($method == 'DELETE') {
 
     $req3 = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
     $req3->execute(array($connected['tokendata']['token']));
-    $test3 = $req3->fetch();
+    $test3 = $req3->fetch(PDO::FETCH_ASSOC);
 
 
     if (!$test3) { # token bien supprimé

@@ -116,7 +116,7 @@ if ($method == 'PATCH') {
       # on vérifie si l'utilisateur existe dans la db (id unique)
       $id_fetch = $db->prepare('SELECT * FROM users WHERE id = ?;');
       $id_fetch->execute(array($data['profile']));
-      $user = $id_fetch->fetch();
+      $user = $id_fetch->fetch(PDO::FETCH_ASSOC);
       if (!$user){
         $errors[]='invalid_profile';
       }

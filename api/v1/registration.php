@@ -25,7 +25,7 @@ if ($method == 'POST') {
       # on vérifie si l'username existe déjà dans la db (unique)
       $username_fetch = $db->prepare('SELECT * FROM client WHERE username = ?;');
       $username_fetch->execute(array($data['username']));
-      $username = $username_fetch->fetch();
+      $username = $username_fetch->fetch(PDO::FETCH_ASSOC);
       if ($username) {
         $errors[]='username_already_exists';
       }
@@ -62,7 +62,7 @@ if ($method == 'POST') {
     # connexion et vérification de l'enregistrement
     $req = $db->prepare('SELECT * FROM client WHERE username = ?;');
     $req->execute(array($data['username']));
-    $test = $req->fetch();
+    $test = $req->fetch(PDO::FETCH_ASSOC);
 
     $verify = password_verify($data['plainpassword'], $test['password']);
     if ($verify) {

@@ -126,14 +126,14 @@ function connected() {
 
   $req = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
   $req->execute(array($token));
-  $test = $req->fetch();
+  $test = $req->fetch(PDO::FETCH_ASSOC);
 
   if ($test) {
     $date = date('Y-m-d H:i:s');
     if ($date < $test['expiration']) {
       $req2 = $db->prepare('SELECT * FROM client WHERE id = ?;');
       $req2->execute(array($test['user']));
-      $test2 = $req2->fetch();
+      $test2 = $req2->fetch(PDO::FETCH_ASSOC);
 
       $newdate = date('Y-m-d H:i:s', strtotime('+1 year'));
       $req3 = $db->prepare('UPDATE client_token SET expiration = ? WHERE token = ?;');
@@ -141,7 +141,7 @@ function connected() {
 
       $req4 = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
       $req4->execute(array($token));
-      $test4 = $req4->fetch();
+      $test4 = $req4->fetch(PDO::FETCH_ASSOC);
 
       return array("status" => true, "data" => $test2, "tokendata" => $test4);
     } else {

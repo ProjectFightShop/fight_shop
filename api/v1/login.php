@@ -47,7 +47,7 @@ if ($method == 'POST') {
     # recherche de l'username dans la db
     $req = $db->prepare('SELECT * FROM client WHERE username = ?;');
     $req->execute(array($data['username']));
-    $test = $req->fetch();
+    $test = $req->fetch(PDO::FETCH_ASSOC);
 
     # check mdp correspondant à l'username avec celui existant
     $verify = password_verify($data['plainpassword'], $test['password']);

@@ -45,7 +45,7 @@ if ($method == 'POST') {
     if (!empty($data['category'])){ #$data['category'] = null ou 1 catégorie à séléctionner (liste)
       $req = $db->prepare('SELECT * FROM category WHERE id = ?;');
       $req->execute(array($data['category']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
       if (!$test){ # fake category
         $errors[]='invalid_category';
       }
@@ -121,7 +121,7 @@ if ($method == 'POST') {
       # on vérifie si l'objet existe dans la db (id unique)
       $id_fetch = $db->prepare('SELECT * FROM listing WHERE id = ?;');
       $id_fetch->execute(array($data['listing']));
-      $object = $id_fetch->fetch();
+      $object = $id_fetch->fetch(PDO::FETCH_ASSOC);
       if (!$object) {
         $errors[]='invalid_listing';
       }
@@ -172,7 +172,7 @@ if ($method == 'POST') {
       # on vérifie si l'objet existe dans la db (id unique)
       $id_fetch = $db->prepare('SELECT * FROM listing WHERE id = ?;');
       $id_fetch->execute(array($data['listing']));
-      $object = $id_fetch->fetch();
+      $object = $id_fetch->fetch(PDO::FETCH_ASSOC);
       if (!$object || $object['seller']!=$connected['data']['id']) {
         # si l'objet n'existe pas ou si l'objet n'appartient pas à l'utilisateur
         $errors[]='invalid_listing';
@@ -237,7 +237,7 @@ if ($method == 'POST') {
     } else {
       $req = $db->prepare('SELECT * FROM listing WHERE id = ?;');
       $req->execute(array($data['listing']));
-      $object = $req->fetch(); # on récupére l'objet
+      $object = $req->fetch(PDO::FETCH_ASSOC); # on récupére l'objet
       if (!$object) {
         $errors[]='invalid_id_object';
       } elseif ($object['seller'] != $connected['data']['id']) {
@@ -284,7 +284,7 @@ if ($method == 'POST') {
     } elseif (!empty($data['category'])){
       $req = $db->prepare('SELECT * FROM category WHERE id = ?;');
       $req->execute(array($data['category']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
       if (!$test) { # fake category
         $errors[]='invalid_category';
       }

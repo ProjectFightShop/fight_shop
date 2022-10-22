@@ -26,7 +26,7 @@ if ($method == 'POST') {
     '%'.$data['search'].'%',
     '%'.$data['search'].'%'
   ));
-  $test = $req->fetchAll();
+  $test = $req->fetchAll(PDO::FETCH_ASSOC);
 
 
   if (!$test) { # pas de résultats
