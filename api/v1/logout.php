@@ -13,7 +13,7 @@ if ($method == 'DELETE') {
     if (empty($connected['tokendata']['token'])){
       $errors[]='missing_token';
     } else {
-      $req = $db->prepare('SELECT * FROM tokens WHERE token = ?;');
+      $req = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
       $req->execute(array($connected['tokendata']['token']));
       $test = $req->fetch();
       if (!$test){
@@ -37,10 +37,10 @@ if ($method == 'DELETE') {
     # supprimer token de la db
 
 
-    $req2 = $db->prepare('DELETE FROM tokens WHERE token = ?;');
+    $req2 = $db->prepare('DELETE FROM client_token WHERE token = ?;');
     $req2->execute(array($connected['tokendata']['token']));
 
-    $req3 = $db->prepare('SELECT * FROM tokens WHERE token = ?;');
+    $req3 = $db->prepare('SELECT * FROM client_token WHERE token = ?;');
     $req3->execute(array($connected['tokendata']['token']));
     $test3 = $req3->fetch();
 
