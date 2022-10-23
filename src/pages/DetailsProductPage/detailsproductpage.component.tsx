@@ -18,17 +18,7 @@ const DetailsProductPage = () : JSX.Element => {
 				  <li>{state.url}</li>
 				</ul>
   	  )}
-	  <ol>
-		<li>a</li>
-		<li>b</li>
-		<li>c</li>
-		<li>d</li>
-		<li>e</li>
-		<li>f</li>
-		<li>g</li>
 
-
-	  </ol>
  	  </>
   );
 };
