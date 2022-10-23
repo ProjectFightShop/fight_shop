@@ -16,7 +16,8 @@ import Search from './pages/search/search.component';
 
 const App = () => {  
   return (
-    <div className="App">
+    <div className="App" style={{
+    overflowY: 'scroll'}}>
       <Routes>
         <Route path="/" element = {<Navigate to="/fight_shop" replace />} />
         <Route path="/fight_shop" element ={<PageLayout />}>
