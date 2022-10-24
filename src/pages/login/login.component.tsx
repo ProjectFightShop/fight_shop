@@ -22,9 +22,9 @@ const Login = ():JSX.Element =>{
 	  await axios
 	    .post("https://fightshop.plugn.fr/v1/login.php",JSON.stringify(userSubmited),{headers: {'Content-Type':'application/json'}})
 	    .then((result) => {
-	      console.log(result.data.msg);
-	      console.log(result.data);
-	      setMessage(result.data.msg);
+	      sessionStorage.setItem("token",result.data['data'].token);
+	      setMessage("success");
+	      console.log(sessionStorage.getItem("token"));
 	    })
 	    .catch((error) => {console.log( error.response.request._response ); setMessage("error"); } );
 

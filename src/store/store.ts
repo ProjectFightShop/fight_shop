@@ -2,8 +2,8 @@ import { Product }  from "../interfaces/product";
 import axios from "axios";
 
 function getProducts(): Product[]{
-	var product: Product[] = [];
-	 axios.post("https://fightshop.plugn.fr/v1/search.php").then((response) => {
+	const product: Product[] = [];
+	axios.post("https://fightshop.plugn.fr/v1/search.php").then((response) => {
 		response.data['data'].forEach((element:any) => {
 			product.push( { 
 				id: element.id, 
@@ -12,17 +12,18 @@ function getProducts(): Product[]{
 				sku: element.sku,
 				color: element.color,
 				size: element.size,
-				price: element.price    
+				price: element.price,
+				url: element.url 
 			
 			
 			});
-	}) 
+		}) 
 	});
 	return product;
 }
 
 
-export const Products:Product[] =  getProducts();
+export const Products:Product[] = getProducts();
 
 /*
 export const  Products: Product[] = [
