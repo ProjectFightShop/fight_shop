@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom';
+import {Link,Navigate} from 'react-router-dom';
 import React, { useState} from 'react';
 import axios from "axios";
 import './login.styles.css';
@@ -37,6 +37,7 @@ const Login = ():JSX.Element =>{
 			      <div className="text-error-login">
 				{" "}
 				<h5> {message} </h5>
+				<Navigate to="/fight_shop" replace />
 			      </div>
 			    ) : (
 			      <></>

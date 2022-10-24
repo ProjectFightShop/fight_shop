@@ -1,5 +1,6 @@
 import React, { useEffect, useState} from 'react';
 import axios from "axios";
+import './account.styles.css';
 
 
 const Account = ():JSX.Element =>{
@@ -7,6 +8,7 @@ const Account = ():JSX.Element =>{
   const [firstName,setFirstName] = useState<string>("");
   const [lastName,setLastName] = useState<string>("");
   const [message,setMessage] = useState<string>("");
+  let load = 0;
   
   
   useEffect(()=> {
@@ -20,7 +22,8 @@ const Account = ():JSX.Element =>{
     	setFirstName(res.first_name);
     	setLastName(res.last_name);
     	setMessage("You are connected !");
-    }).catch((error) => setMessage("Not connected !"));
+      load=1;
+    })
   };
     
     getUser();
@@ -29,11 +32,16 @@ const Account = ():JSX.Element =>{
           
   return (
     <>
-      <p>{message}</p>
-      <p>Your account : </p>
-      <p>Username : {username}</p> 
-      <p>First Name : {firstName}</p> 
-      <p>Last Name : {lastName}</p> 
+
+      {!message ? (<h3 className="notConnect"><b>Not Connected</b></h3>) : (
+        <div className="account">
+          <h3 className="connect"><b>Connected</b></h3>
+          <p className="topic"><b>Your account : </b></p>
+          <p className="attribute">Username : {username}</p> 
+          <p className="attribute">First Name : {firstName}</p> 
+          <p className="attribute">Last Name : {lastName}</p>
+        </div>)
+      }
     
     </>
   );
