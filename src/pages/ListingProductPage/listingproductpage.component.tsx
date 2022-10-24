@@ -1,6 +1,8 @@
 import {Products}  from "../../store/store";
 import ProductListingItem from '../../components/ProductListingItem/productlistingitem.component';
 
+import "./listingproductpage.styles.css";
+
 const ListingProduct = () => {
 	 
 	const listItems = Products.map((product) => 
@@ -15,7 +17,7 @@ const ListingProduct = () => {
 		  url= {product.url}
 		/>
 	);
-	return <>{listItems}</>;
+	return <div className="page_produit">{listItems}</div>;
 };
 
 
