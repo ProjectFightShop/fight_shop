@@ -35,7 +35,7 @@ const Account = ():JSX.Element =>{
 
       {!message ? (<h3 className="notConnect"><b>Not Connected</b></h3>) : (
         <div className="account">
-          <h3 className="connect"><b>Connected</b></h3>
+          <h3 className="connectAccount"><b>Connected</b></h3>
           <p className="topic"><b>Your account : </b></p>
           <p className="attribute">Username : {username}</p> 
           <p className="attribute">First Name : {firstName}</p> 
