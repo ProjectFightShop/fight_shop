@@ -25,9 +25,9 @@ if ($method == 'POST') {
   $req->execute(array(
     '%'.$data['search'].'%',
     '%'.$data['search'].'%',
+    $data['search'],
     '%'.$data['search'].'%',
-    '%'.$data['search'].'%',
-    '%'.$data['search'].'%',
+    $data['search'],
     '%'.$data['category'].'%'
   ));
   $test = $req->fetchAll(PDO::FETCH_ASSOC);
