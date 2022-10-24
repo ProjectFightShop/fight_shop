@@ -6,11 +6,12 @@ import "./productlistingitem.styles.css";
 function ProductListingItem( product : Product){
   return (
     <div className="produit">
-      <p>{product.url}</p>
-      <p>{product.id}</p>
-      <p>{product.name}</p>
-      <p>{product.price}</p>  
-      <Link to={'/fight_shop/gloves/'+product.id} state={product}> to </Link>
+      <img src={product.url+"1.jpg"} alt={product.sku} />
+      <div className="all_info">
+        <p>{product.name}</p>
+        <p>{product.price}</p>  
+        <Link to={'/fight_shop/gloves/'+product.id} state={product}> to </Link>
+      </div>
     </div>
   );
 };

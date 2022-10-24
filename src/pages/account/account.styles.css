@@ -1,0 +1,31 @@
+.account{
+    text-align: left;
+}
+
+.connect,.notConnect{
+    display: inline-block;
+    width: 100px;
+    text-align: center;
+    border: 3px solid;
+    background-color: rgb(220, 220, 220);
+}
+
+.connectAccount{
+    color : green;
+    margin-top: 15px;
+    margin-left: 30px;
+    border-color: green;
+}
+
+.notConnect{
+    color : red;
+    border-color : red;
+}
+
+.topic{
+    margin-left: 30px;
+    font-size: 20px;
+}
+.attribute{
+    margin-left: 60px;
+}

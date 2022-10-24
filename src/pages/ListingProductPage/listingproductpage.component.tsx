@@ -3,13 +3,13 @@ import ProductListingItem from '../../components/ProductListingItem/productlisti
 import {Product}  from "../../interfaces/product";
 import {Gloves} from "../../store/store";
 
+import "./listingproductpage.styles.css";
+
 interface ProductsListProps {
   products:Product[];
 }
 
-const ListingProduct = ({products}:ProductsListProps) => {
-	 
-	
+const ListingProduct = ({products}:ProductsListProps) => {	
 	const listItems = products.map((product:Product) => 
 		<ProductListingItem
 		  id={product.id}  
@@ -22,7 +22,7 @@ const ListingProduct = ({products}:ProductsListProps) => {
 		  url= {product.url}
 		/>
 	);
-	return <>{listItems}</>;
+	return <div className="page_produit">{listItems}</div>;
 };
 
 
