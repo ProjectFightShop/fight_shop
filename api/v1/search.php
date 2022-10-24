@@ -21,10 +21,14 @@ if ($method == 'POST') {
     exit();
   }
 
-  $req = $db->prepare('SELECT * FROM product WHERE (name LIKE ? OR description LIKE ?);');
+  $req = $db->prepare('SELECT * FROM product WHERE (name LIKE ? OR description LIKE ? OR SKU LIKE ? OR color LIKE ? OR size LIKE ?) AND category_id = (SELECT id FROM product_category WHERE name LIKE ?);');
   $req->execute(array(
     '%'.$data['search'].'%',
-    '%'.$data['search'].'%'
+    '%'.$data['search'].'%',
+    '%'.$data['search'].'%',
+    '%'.$data['search'].'%',
+    '%'.$data['search'].'%',
+    '%'.$data['category'].'%'
   ));
   $test = $req->fetchAll(PDO::FETCH_ASSOC);
 
