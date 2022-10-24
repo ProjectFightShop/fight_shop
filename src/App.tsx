@@ -13,6 +13,7 @@ import DetailsProductPage from './pages/DetailsProductPage/detailsproductpage.co
 import CreateAccount from './pages/create_account/create_account.component';
 import Account from './pages/account/account.component';
 import Search from './pages/search/search.component';
+import {Gloves,Groin,Headgear}  from "./store/store";
 
 const App = () => {  
   return (
@@ -27,14 +28,14 @@ const App = () => {
           <Route path="account" element ={<Account />} />
           <Route path="search" element ={<Search />} />
           <Route path="gloves">
-            <Route index element={<ListingProductPage />} />
+            <Route index element={<ListingProductPage products={Gloves} />} />
             <Route path=":id" element={<DetailsProductPage />} />
           </Route>
           <Route path="headgear">
-            <Route index element={<ListingProductPage />} />
+            <Route index element={<ListingProductPage products={Headgear}/>} />
           </Route>
           <Route path="groin">
-            <Route index element={<ListingProductPage />} />
+            <Route index element={<ListingProductPage products={Groin} />} />
           </Route>
         </Route>
         <Route

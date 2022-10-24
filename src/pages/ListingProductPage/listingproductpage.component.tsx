@@ -1,9 +1,16 @@
-import {Products}  from "../../store/store";
+import React, { useState} from 'react';
 import ProductListingItem from '../../components/ProductListingItem/productlistingitem.component';
+import {Product}  from "../../interfaces/product";
+import {Gloves} from "../../store/store";
 
-const ListingProduct = () => {
+interface ProductsListProps {
+  products:Product[];
+}
+
+const ListingProduct = ({products}:ProductsListProps) => {
 	 
-	const listItems = Products.map((product) => 
+	
+	const listItems = products.map((product:Product) => 
 		<ProductListingItem
 		  id={product.id}  
 		  name={product.name} 
