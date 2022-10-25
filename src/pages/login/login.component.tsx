@@ -17,14 +17,12 @@ const Login = ():JSX.Element =>{
 	    username: username,
 	    plainpassword: password
 	  };
-	  
-	  console.log(JSON.stringify(userSubmited));
+
 	  await axios
 	    .post("https://fightshop.plugn.fr/v1/login.php",JSON.stringify(userSubmited),{headers: {'Content-Type':'application/json'}})
 	    .then((result) => {
 	      sessionStorage.setItem("token",result.data['data'].token);
 	      setMessage("success");
-	      console.log(sessionStorage.getItem("token"));
 	    })
 	    .catch((error) => {console.log( error.response.request._response ); setMessage("error"); } );
 
