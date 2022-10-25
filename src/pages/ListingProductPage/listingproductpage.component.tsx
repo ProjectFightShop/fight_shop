@@ -1,7 +1,8 @@
 import React, { useState} from 'react';
 import ProductListingItem from '../../components/ProductListingItem/productlistingitem.component';
 import {Product}  from "../../interfaces/product";
-import {Gloves} from "../../store/store";
+import {getProducts} from "../../store/store";
+import { useSearchParams } from "react-router-dom";
 
 import "./listingproductpage.styles.css";
 
@@ -9,7 +10,7 @@ interface ProductsListProps {
   products:Product[];
 }
 
-const ListingProduct = ({products}:ProductsListProps) => {	
+export function ListingProduct({products}:ProductsListProps) {	
 	const listItems = products.map((product:Product) => 
 		<ProductListingItem
 		  id={product.id}  
@@ -24,6 +25,3 @@ const ListingProduct = ({products}:ProductsListProps) => {
 	);
 	return <div className="page_produit">{listItems}</div>;
 };
-
-
-export default ListingProduct;

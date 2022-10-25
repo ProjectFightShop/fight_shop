@@ -1,10 +1,14 @@
 import { Product }  from "../interfaces/product";
 import axios from "axios";
 
-function getProducts(category:string | void ): Product[]{
+export function getProducts(search: string | void, category:string | void ): Product[]{
 	const product: Product[] = [];
-	axios.post("https://fightshop.plugn.fr/v1/search.php",{category:category}).then((response) => {
+	console.log("search", search); console.log("category", category);
+	axios.post("https://fightshop.plugn.fr/v1/search.php",{search: search, category:category}).then((response) => {
+		console.log("response", response);
 		response.data['data'].forEach((element:any) => {
+			console.log(element);
+			console.log(product);
 			product.push( { 
 				id: element.id, 
 				description: element.description, 
@@ -14,19 +18,17 @@ function getProducts(category:string | void ): Product[]{
 				size: element.size,
 				price: element.price,
 				url: element.url 
-			
-			
 			});
 		}) 
 	});
+
+	console.log("product", product);
 	return product;
+	
 }
 
 
 export const Products:Product[] = getProducts();
-export const Gloves:Product[] = getProducts("gloves");
-export const Headgear:Product[] = getProducts("headgear");
-export const Groin:Product[] = getProducts("groin");
 
 /*
 export const  Products: Product[] = [

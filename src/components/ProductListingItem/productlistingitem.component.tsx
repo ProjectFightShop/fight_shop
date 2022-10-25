@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import "./productlistingitem.styles.css";
 
-function ProductListingItem( product : Product){
+function ProductListingItem(product : Product) {
   return (
     <div id="produit">
       <img src={product.url+"1.jpg"} alt={product.sku} />
