@@ -21,12 +21,16 @@ if ($method == 'POST') {
     exit();
   }
 
-  $req = $db->prepare('SELECT * FROM listing WHERE ((name LIKE ? OR description LIKE ?) AND status = 1);');
+  $req = $db->prepare('SELECT * FROM product WHERE (name LIKE ? OR description LIKE ? OR SKU LIKE ? OR color LIKE ? OR size = ?) AND category_id IN (SELECT id FROM product_category WHERE name LIKE ?);');
   $req->execute(array(
     '%'.$data['search'].'%',
-    '%'.$data['search'].'%'
+    '%'.$data['search'].'%',
+    '%'.$data['search'].'%',
+    '%'.$data['search'].'%',
+    $data['search'],
+    '%'.$data['category'].'%'
   ));
-  $test = $req->fetchAll();
+  $test = $req->fetchAll(PDO::FETCH_ASSOC);
 
 
   if (!$test) { # pas de résultats

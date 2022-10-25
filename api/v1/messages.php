@@ -53,7 +53,7 @@ if ($method == 'GET') {
     } else {
       $req = $db->prepare('SELECT * FROM users WHERE id = ?;');
       $req->execute(array($data['receiver']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
 
       if (!$test || $data['receiver'] == $connected['data']['id']) {
         $errors[]='invalid_receiver';
@@ -76,7 +76,7 @@ if ($method == 'GET') {
       $req = $db->prepare('SELECT * FROM messages WHERE (sender = ? AND receiver = ?)
       OR (receiver = ? AND sender = ?) ORDER BY date DESC;');
       $req->execute(array($connected['data']['id'], $data['receiver'], $connected['data']['id'], $data['receiver']));
-      $test = $req->fetchAll();
+      $test = $req->fetchAll(PDO::FETCH_ASSOC);
 
       if ($test)
       {
@@ -117,7 +117,7 @@ if ($method == 'GET') {
       } else {
         $req = $db->prepare('SELECT * FROM users WHERE id = ?;');
         $req->execute(array($data['receiver']));
-        $test = $req->fetch();
+        $test = $req->fetch(PDO::FETCH_ASSOC);
 
         if (!$test || $data['receiver'] == $connected['data']['id']) {
           $errors[]='invalid_receiver';
@@ -192,7 +192,7 @@ if ($method == 'GET') {
     if (!empty($data['message'])) {
       $req = $db->prepare('SELECT * FROM messages WHERE id = ?;');
       $req->execute(array($data['message']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
 
       if (!$test) {
         $errors[]="invalid_message";
@@ -202,7 +202,7 @@ if ($method == 'GET') {
     if (!empty($data['receiver'])) {
       $req = $db->prepare('SELECT * FROM users WHERE id = ?;');
       $req->execute(array($data['receiver']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
 
       if (!$test || $data['receiver'] == $connected['data']['id']) {
         $errors[]="invalid_receiver";
@@ -299,7 +299,7 @@ if ($method == 'GET') {
     if (!empty($data['message'])) {
       $req = $db->prepare('SELECT * FROM messages WHERE id = ?;');
       $req->execute(array($data['message']));
-      $test = $req->fetch();
+      $test = $req->fetch(PDO::FETCH_ASSOC);
 
       if (!$test) {
         $errors[]="invalid_message";
@@ -321,7 +321,7 @@ if ($method == 'GET') {
 
         $req2 = $db->prepare('SELECT * FROM messages WHERE id = ?;');
         $req2->execute(array($data['message']));
-        $test2 = $req2->fetch();
+        $test2 = $req2->fetch(PDO::FETCH_ASSOC);
 
 
         if ($test && $test2){ # message bien modifié

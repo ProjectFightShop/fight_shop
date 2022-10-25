@@ -19,18 +19,13 @@ if ($method == 'POST') {
   } else {
     # test si les données sont vides
     $errors=array();
-    if (empty($data['email'])){
-      $errors[]='missing_email';
+    if (empty($data['username'])){
+      $errors[]='missing_username';
     }
     if (empty($data['plainpassword'])){
       $errors[]='missing_plainpassword';
     }
     # test si les données sont valides
-    if (!empty($data['email'])){
-      if(!filter_var($data['email'], FILTER_VALIDATE_EMAIL)){
-        $errors[]='invalid_email';
-      }
-    }
     if (!empty($data['plainpassword'])){ #8 caractères, 1 minuscule, 1 majuscule, 1 chiffre, 1 caractère spécial minimum
       if (preg_match("/^\S*(?=\S{8,})(?=\S*[a-z])(?=\S*[A-Z])(?=\S*[\d])(?=\S*[\W])\S*$/",$data['plainpassword'])===0) {
         $errors[]='password_not_conform';
@@ -49,15 +44,15 @@ if ($method == 'POST') {
       exit();
     }
 
-    # recherche de l'email dans la db
-    $req = $db->prepare('SELECT * FROM users WHERE email = ?;');
-    $req->execute(array($data['email']));
-    $test = $req->fetch();
+    # recherche de l'username dans la db
+    $req = $db->prepare('SELECT * FROM client WHERE username = ?;');
+    $req->execute(array($data['username']));
+    $test = $req->fetch(PDO::FETCH_ASSOC);
 
-    # check mdp correspondant à l'email avec celui existant
+    # check mdp correspondant à l'username avec celui existant
     $verify = password_verify($data['plainpassword'], $test['password']);
 
-    if (!$test){ # mauvais email
+    if (!$test){ # mauvais username
 
       http_response_code(404); # not found
 
@@ -67,12 +62,12 @@ if ($method == 'POST') {
         "returntosender" => $data
       ));
 
-    } elseif ($verify) { # bon email et mdp
+    } elseif ($verify) { # bon username et mdp
 
       $token = generateRandomString(255);
       $date = date('Y-m-d H:i:s', strtotime('+1 year'));
       # ajout du token dans la db
-      $req2=$db->prepare('INSERT INTO tokens(user, token, expiration) VALUES(:user, :token, :expiration);');
+      $req2=$db->prepare('INSERT INTO client_token(user, token, expiration) VALUES(:user, :token, :expiration);');
       $req2->execute(array(
         "user" => $test['id'],
         "token" => $token,
