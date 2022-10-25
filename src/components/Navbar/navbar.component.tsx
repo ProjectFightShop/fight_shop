@@ -1,38 +1,43 @@
-import React from 'react';
+import { Link} from 'react-router-dom';
 
 import './navbar.styles.css';
+import Logo from '../../assets/Logo.png';
 
-const Navbar = ():JSX.Element =>{
+const Navbar = ():JSX.Element => {
+	
 	return (
 		<>
 			<div className="navbar-header">
+				<Link to="/fight_shop" className="navbar-logo">
+					<img className="logo" src={Logo} alt="logo"/>
+				</Link>
 				<ul className="nav-list">
 					<li className="nav-item">
-						<a href="account">My Account</a>
+						<Link to="account">My Account</Link>
 					</li>
 					<li className="nav-item">
-						<a href="login">Log In</a>
+						<Link to="login">Log In</Link>
 					</li>
 					<li className="nav-item">
-						<a href="navitem">Create an account</a>
+						<Link to="create_account">Create an account</Link>
 					</li>
 				</ul>
 			</div>
 			<div className="navbar-main">
 				<ul className="nav-list-main">
 					<li className="nav-main-item">
-						<a href="gloves">GLOVES</a>
+						<Link to="gloves">GLOVES</Link>
 					</li>
 					<li className="nav-main-item">
-						<a href="headgear">HEADGEAR</a>
+						<Link to="headgear">HEADGEAR</Link>
 					</li>
 					<li className="nav-main-item">
-						<a href="groin">GROIN PROTECTOR</a>
+						<Link to="groin">GROIN PROTECTOR</Link>
 					</li>
 				</ul>
-				<form>	
+				<form action='search' method="get">
 					<input className="form-search" type="text"  placeholder="Search.."/>
-					<button className="form-search">Search</button>
+					<button className="form-search" type="submit">Search</button>
 				</form>
 			</div>
 		</>

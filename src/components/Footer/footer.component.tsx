@@ -1,6 +1,3 @@
-/* modules */
-import React from 'react'
-
 /* styles */
 import './footer.styles.css'
 
@@ -18,7 +15,10 @@ const Footer = (): JSX.Element => {
                 </div>
                 <div className="footer-container__item">
                     <h3 className="footer-container__item__title">Follow Us</h3>
-                    <p className="footer-container__item__text">Discord - https://discord.gg/rnQfXBnDZX<br/>Twitter - https://twitter.com/1PantheonAssas<br/>Linkedin - https://www.linkedin.com/company/one-panth%C3%A9on</p>
+                    <p className="footer-container__item__text">
+                        Discord - <a href="https://discord.gg/rnQfXBnDZX">https://discord.gg/rnQfXBnDZX</a><br/>
+                        Twitter - <a href="https://twitter.com/1PantheonAssas">https://twitter.com/1PantheonAssas</a><br/>
+                        Linkedin - <a href="https://www.linkedin.com/company/one-panth%C3%A9on">https://www.linkedin.com/company/one-panth%C3%A9on</a></p>
                 </div>
             </div>
         </footer>

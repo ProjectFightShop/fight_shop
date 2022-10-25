@@ -1,7 +1,16 @@
 .navbar-header {
 	background-color: black;
 	overflow: hidden;
-}	
+}
+
+.logo {
+	float: left;
+	font-size: 20px;
+	padding: 10px;
+	color: white;
+	text-decoration: none;
+	width: 50px;
+}
 		
 .nav-list {
 	display: flex;
@@ -33,6 +42,21 @@
 	gap: 10vw;
 }
 
+@media(max-width:800px){
+   
+   .nav-list {
+   	justify-content: center;
+   }
+   
+   .form-search {
+	display: none;
+	
+   }
+   
+   .nav-list-main {
+   	flex-direction: column;
+   }
+}
 
 .nav-list-main {
 	display: flex;

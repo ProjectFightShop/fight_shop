@@ -1,9 +1,6 @@
-:root {
-	
-}
 *{
 	overflow: hidden
-},
+}
 ::after,
 ::before {
 	box-sizing: border-box;
