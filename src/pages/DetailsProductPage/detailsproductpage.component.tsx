@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 
 import './detailsproductpage.styles.css';
 
@@ -15,6 +15,7 @@ const DetailsProductPage = () : JSX.Element => {
 				  <li>Description : {state.description}</li>
 				  <li>Color : {state.color}</li>
 				  <li>Size : {state.size}</li>
+				  <li><button className="buy" type="submit"><Link to="../../checkout" state={state}>Buy</Link></button></li>
 				</ul>
 			</div>
   	  )}
