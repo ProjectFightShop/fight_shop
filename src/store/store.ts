@@ -1,9 +1,9 @@
 import { Product }  from "../interfaces/product";
 import axios from "axios";
 
-function getProducts(): Product[]{
+function getProducts(category:string | void ): Product[]{
 	const product: Product[] = [];
-	axios.post("https://fightshop.plugn.fr/v1/search.php").then((response) => {
+	axios.post("https://fightshop.plugn.fr/v1/search.php",{category:category}).then((response) => {
 		response.data['data'].forEach((element:any) => {
 			product.push( { 
 				id: element.id, 
@@ -24,6 +24,9 @@ function getProducts(): Product[]{
 
 
 export const Products:Product[] = getProducts();
+export const Gloves:Product[] = getProducts("gloves");
+export const Headgear:Product[] = getProducts("headgear");
+export const Groin:Product[] = getProducts("groin");
 
 /*
 export const  Products: Product[] = [
