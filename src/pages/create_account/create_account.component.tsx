@@ -25,12 +25,10 @@ const CreateAccount = ():JSX.Element =>{
 	    last_name: lastName
 	  };
 	  
-	  console.log(JSON.stringify(userSubmited));
+	  
 	  await axios
 	    .post("https://fightshop.plugn.fr/v1/registration.php",JSON.stringify(userSubmited),{headers: {'Content-Type':'application/json'}})
 	    .then((result) => {
-	      console.log(result.data.msg);
-	      console.log(result.data);
 	      setMessage(result.data.msg);
 	    })
 	    .catch((error) => {console.log( error.response.request._response ); setMessage("error"); } );

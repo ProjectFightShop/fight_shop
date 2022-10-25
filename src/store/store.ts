@@ -3,12 +3,8 @@ import axios from "axios";
 
 export function getProducts(search: string | void, category:string | void ): Product[]{
 	const product: Product[] = [];
-	console.log("search", search); console.log("category", category);
 	axios.post("https://fightshop.plugn.fr/v1/search.php",{search: search, category:category}).then((response) => {
-		console.log("response", response);
 		response.data['data'].forEach((element:any) => {
-			console.log(element);
-			console.log(product);
 			product.push( { 
 				id: element.id, 
 				description: element.description, 
@@ -22,7 +18,6 @@ export function getProducts(search: string | void, category:string | void ): Pro
 		}) 
 	});
 
-	console.log("product", product);
 	return product;
 	
 }

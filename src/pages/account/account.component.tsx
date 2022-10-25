@@ -15,8 +15,7 @@ const Account = ():JSX.Element =>{
     const getUser =  async () => {
     const response = await axios.get("https://fightshop.plugn.fr/v0/connected.php",
     			{headers: {'token':sessionStorage.getItem("token")}}
-    ).then((response) => {
-    	console.log(response.data[0]['data'].username);    	
+    ).then((response) => {  	
     	const res = response.data[0]['data'];
     	setUsername(res.username);
     	setFirstName(res.first_name);
