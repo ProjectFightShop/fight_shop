@@ -7,16 +7,16 @@ const DetailsProductPage = () : JSX.Element => {
   return (
     <>
 		  {state && (
-				<ul>
-				  <li>{state.id}</li>
+			<div id="produitDetails">
+				<img src={state.url+"1.jpg"} alt={state.sku} />
+				<ul id="all_infoDetails">
 				  <li>{state.name}</li>
-				  <li>{state.price}</li>
-				  <li>{state.description}</li>
-				  <li>{state.sku}</li>
-				  <li>{state.color}</li>
-				  <li>{state.size}</li>
-				  <li>{state.url}</li>
+				  <li>Price : {state.price}</li>
+				  <li>Description : {state.description}</li>
+				  <li>Color : {state.color}</li>
+				  <li>Size : {state.size}</li>
 				</ul>
+			</div>
   	  )}
 
  	  </>
