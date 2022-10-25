@@ -8,13 +8,23 @@ import './App.css';
 import PageLayout from './pages/PageLayout/pagelayout.component';
 import HomePage from './pages/homepage/homepage.component';
 import Login from './pages/login/login.component';
-import ListingProductPage from './pages/ListingProductPage/listingproductpage.component';
+import { ListingProduct } from './pages/ListingProductPage/listingproductpage.component';
 import DetailsProductPage from './pages/DetailsProductPage/detailsproductpage.component';
 import CreateAccount from './pages/create_account/create_account.component';
 import Account from './pages/account/account.component';
-import Search from './pages/search/search.component';
 import Checkout from './pages/checkout/checkout.component';
-import {Gloves,Groin,Headgear}  from "./store/store";
+import CheckoutCompleted from './pages/checkout/checkoutcompleted.component';
+import {getProducts}  from "./store/store";
+import { Product } from './interfaces/product';
+import SearchPage from './pages/searchpage/searchpage.component';
+
+const Gloves:Product[] = getProducts("", "gloves");
+const Headgear:Product[] = getProducts("", "headgear");
+const Groin:Product[] = getProducts("", "groin");
+const Products:Product[] = getProducts();
+
+export var search = "";
+export var Search:Product[] = getProducts(search);
 
 const App = () => {  
   return (
@@ -27,17 +37,18 @@ const App = () => {
           <Route path="login" element ={<Login />} />
           <Route path="create_account" element ={<CreateAccount />} />
           <Route path="account" element ={<Account />} />
-          <Route path="search" element ={<Search />} />
+          <Route path="search" element ={<SearchPage />} />
 		  <Route path="checkout" element ={<Checkout />} />
+		  <Route path="checkoutcompleted" element ={<CheckoutCompleted />} />
           <Route path="gloves">
-            <Route index element={<ListingProductPage products={Gloves} />} />
+            <Route index element={<ListingProduct products={Gloves} />} />
             <Route path=":id" element={<DetailsProductPage />} />
           </Route>
           <Route path="headgear">
-            <Route index element={<ListingProductPage products={Headgear}/>} />
+            <Route index element={<ListingProduct products={Headgear}/>} />
           </Route>
           <Route path="groin">
-            <Route index element={<ListingProductPage products={Groin} />} />
+            <Route index element={<ListingProduct products={Groin} />} />
           </Route>
         </Route>
         <Route

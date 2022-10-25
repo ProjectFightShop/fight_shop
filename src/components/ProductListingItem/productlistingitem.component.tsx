@@ -3,11 +3,11 @@ import { Link } from "react-router-dom";
 
 import "./productlistingitem.styles.css";
 
-function ProductListingItem( product : Product){
+function ProductListingItem(product : Product) {
   return (
-    <div className="produit">
+    <div id="produit">
       <img src={product.url+"1.jpg"} alt={product.sku} />
-      <div className="all_info">
+      <div id="all_info">
         <p>{product.name}</p>
         <p>{product.price}</p>  
         <Link to={'/fight_shop/gloves/'+product.id} state={product}> to </Link>

@@ -3,18 +3,20 @@ import axios from 'axios';
 import {Product} from '../../interfaces/product';
 import {Products} from '../../store/store';
 import ProductListingItem from '../../components/ProductListingItem/productlistingitem.component';
+import { useSearchParams } from "react-router-dom";
 
 /* styles */
-import './homepage.styles.css'
+import './searchpage.styles.css'
 
-const HomePage = ():JSX.Element =>{
+const SearchPage = ():JSX.Element =>{
   
   const[products,setProducts] = useState<Product[]>([]);
+  var [searchParams, setSearchParams] = useSearchParams();
   
   useEffect(() => {
-  async function getProducts(category:string | void ): Promise<void>{
+  async function getProducts(search:string | void ): Promise<void>{
         const product: Product[] = [];
-        await axios.post("https://fightshop.plugn.fr/v1/search.php",{category:category}).then((response) => {
+        await axios.post("https://fightshop.plugn.fr/v1/search.php",{search:search}).then((response) => {
                 response.data['data'].forEach((element:any) => {
                         product.push( { 
                                 id: element.id, 
@@ -33,9 +35,10 @@ const HomePage = ():JSX.Element =>{
         setProducts(product);
   }
   
-  getProducts("");
   
-  },[products]);
+  getProducts(searchParams.get("search") ?? "");
+  
+  },[products, searchParams]);
 
   
   
@@ -55,4 +58,4 @@ const HomePage = ():JSX.Element =>{
 	  </div>);
 };
 
-export default HomePage;
+export default SearchPage;

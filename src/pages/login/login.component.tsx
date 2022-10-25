@@ -43,14 +43,14 @@ const Login = ():JSX.Element =>{
 			      <></>
 			    )}
 
-            		<form className="form-login" onSubmit={submitUser}>
+            		<form className="form-login" id="form" onSubmit={submitUser}>
 				<div>
 					<label htmlFor ="form-user">User :</label>
-					<input className="form-user" type="text" name="username" onChange={ (e) => handleUsername(e)}/>
+					<input id="input" className="form-user" type="text" name="username" onChange={ (e) => handleUsername(e)}/>
 				</div>
 				<div>
-					<label htmlFor ="form-password">Password : </label>
-					<input className="form-password" type="password" name="password" onChange={ (e) => handlePassword(e)}/>
+					<label id="label" htmlFor ="form-password">Password : </label>
+					<input id="input" className="form-password" type="password" name="password" onChange={ (e) => handlePassword(e)}/>
 				</div>
 				<button className="Login" type="submit">Login</button>
 			</form>

@@ -1,33 +1,36 @@
-.prod {
+.page_produit {
     display:flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width:100%;
+    justify-content: center;
+    background-color: lightgray;
 }
 
-
-
-.produit {
+#produit {
     background-color: gray;
     display:flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 700px;
     border: 2px solid black;
+    margin-top: 4px;
+    margin-bottom: 4px;
     border-collapse: collapse;
 }
 
-.produit img {
+#produit img {
     width: 50%;
     max-height: none;
     height: 100%;
     opacity: 0.90;
 }
 
-.all_info {
+#all_info {
     width:100%;
     display:flex;
     flex-direction: column;
-    align-items:center;
-    justify-content: space-around;
-    background-color: lightcoral;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(241, 241, 241);
 }
