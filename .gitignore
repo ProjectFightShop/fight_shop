@@ -3,3 +3,7 @@ build/*
 dist/*
 */.DS_Store
 package-lock.json
+package.json
+.history/*
+vendor/*
+api/vendor/*

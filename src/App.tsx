@@ -13,6 +13,7 @@ import DetailsProductPage from './pages/DetailsProductPage/detailsproductpage.co
 import CreateAccount from './pages/create_account/create_account.component';
 import Account from './pages/account/account.component';
 import Search from './pages/search/search.component';
+import Checkout from './pages/checkout/checkout.component';
 import {Gloves,Groin,Headgear}  from "./store/store";
 
 const App = () => {  
@@ -27,6 +28,7 @@ const App = () => {
           <Route path="create_account" element ={<CreateAccount />} />
           <Route path="account" element ={<Account />} />
           <Route path="search" element ={<Search />} />
+		  <Route path="checkout" element ={<Checkout />} />
           <Route path="gloves">
             <Route index element={<ListingProductPage products={Gloves} />} />
             <Route path=":id" element={<DetailsProductPage />} />
