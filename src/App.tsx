@@ -17,6 +17,7 @@ import CheckoutCompleted from './pages/checkout/checkoutcompleted.component';
 import {getProducts}  from "./store/store";
 import { Product } from './interfaces/product';
 import SearchPage from './pages/searchpage/searchpage.component';
+//caca
 
 const Gloves:Product[] = getProducts("", "gloves");
 const Headgear:Product[] = getProducts("", "headgear");
